@@ -6,7 +6,9 @@ import polars as pl
 #schedule = nfl.load_schedules([2024])
 #pbp = nfl.load_schedules([2024])
 
+# seasons we grab the data from
 SEASONS = list(range(2010,2026))
+# creates the path for the data
 RAW_DIR = Path("data/raw")
 
 
@@ -18,12 +20,12 @@ PBP_COLUMNS = [
     "qb_kneel", "qb_spike",
 ]
 
-# writes the schedule of a season to the file "schedules.parquet"
+# creates and writes the schedule of a season to the file "schedules.parquet"
 def ingest_schedules():
     schedules = nfl.load_schedules(SEASONS)
     schedules.write_parquet(RAW_DIR / "schedules.parquet")
 
-
+# creates and writes the play by play data to the file "pbp.parquet"
 def ingest_pbp():
     frame = []
     for season in SEASONS:
@@ -34,7 +36,7 @@ def ingest_pbp():
 
 
 def main():
-
+    # creates the folder data/raw
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     ingest_schedules()
     print("getting play by play data")
