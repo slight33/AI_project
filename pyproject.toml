@@ -1,0 +1,25 @@
+[project]
+name = "ai-project-1"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "slight33", email = "155584128+slight33@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.11.2",
+    "nflreadpy>=0.1.5",
+    "pandas>=3.1.0",
+    "polars>=2.1.0",
+    "pyarrow>=26.0.0",
+    "scikit-learn>=1.9.1",
+    "xgboost>=3.4.1",
+]
+
+[project.scripts]
+ai-project-1 = "ai_project_1:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
