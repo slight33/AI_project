@@ -20,9 +20,16 @@ PBP_COLUMNS = [
     "qb_kneel", "qb_spike",
 ]
 
+# old team citys need to be updated:
+team_map = {"STL" : "LA", "SD": "LAC", "OAK": "LV"}
+
 # creates and writes the schedule of a season to the file "schedules.parquet"
 def ingest_schedules():
-    schedules = nfl.load_schedules(SEASONS)
+    # updates the old citys to new city
+    schedules = nfl.load_schedules(SEASONS).with_columns(
+        pl.col("home_team").replace(team_map),
+        pl.col("away_team").replace(team_map)
+    )
     schedules.write_parquet(RAW_DIR / "schedules.parquet")
 
 # creates and writes the play by play data to the file "pbp.parquet"
