@@ -87,7 +87,7 @@ for game in schedules.iter_rows(named=True): # returns a dict
         winner_diff = net_elo_diff      # will be zero 
 
     # elo multiplier from article
-    mult = math.log(abs(score_margin) + 1) * 2.2 / (winner_diff * 0.001 + 2.2)
+    mult = math.log(abs(score_margin) + 1) * (2.2 / (winner_diff * 0.001 + 2.2))
 
     # elo change formula (from refrence)
     elo_change = k * mult * (result - home_win_prob)
