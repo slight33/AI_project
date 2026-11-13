@@ -102,7 +102,7 @@ team_games = (
         (pl.col("off_epa") - pl.col("def_epa")).alias("net_epa"),
         (pl.col("takeaways") - pl.col("turnovers")).alias("turnover_margin")
         )
-    .sort(["season", "week", "game_id", "team"])
+    .sort(["game_id", "season", "week", "team"])
 )
 
 #print(team_games.head(5))
