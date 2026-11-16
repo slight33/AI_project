@@ -29,7 +29,7 @@ def ingest_schedules():
     schedules = nfl.load_schedules(SEASONS).with_columns(
         pl.col("home_team").replace(team_map),
         pl.col("away_team").replace(team_map)
-    )
+    ).sort("game_id")
     schedules.write_parquet(RAW_DIR / "schedules.parquet")
 
 # creates and writes the play by play data to the file "pbp.parquet"

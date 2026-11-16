@@ -3,8 +3,8 @@
 import polars as pl
 import math
 
-k = 20       # how fast the ratings move (tuned later)
-hfa = 48     # home field advantage (typically inpacts spreed by 3) (tuned later)
+k = 20           # how fast the ratings move (tuned later)
+hfa = 48        # home field advantage (typically inpacts spreed by 3) (tuned later)
 hfa_covid = 33  # games during covid did not have fans
 bye_week = 25    # teams coming off a bye
 starting = 1505   # inital elo rating
